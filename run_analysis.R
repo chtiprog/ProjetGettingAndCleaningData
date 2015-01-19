@@ -1,3 +1,4 @@
+# 1 ---------------------------------------------------------------
 # Create the data frames with the given data set
 testSet <- read.table("X_test.txt")
 trainSet <- read.table("X_train.txt")
@@ -9,10 +10,12 @@ colnames(trainSet) <- colonnesNames
 # Custome column'names to distinguish the test and train datasets
 colnames(testSet) <- paste("test", colnames(testSet), sep = "-")
 colnames(trainSet) <- paste("train", colnames(trainSet), sep = "-")
+# Merges the training and the test sets to create one data set
+library(plyr)
+mergedData <- rbind.fill(testSet, trainSet)
 
+# 2 ----------------------------------------------------------------
 # Extracts only the measurements on the mean and standard deviation for each measurement.
-setWithMeanTestSet <- testSet[ , grepl("mean" , names(testSet))]
-setWithSdTestSet <- testSet[ , grepl("std", names(testSet))]
-setWithMeanTrainSet <- trainSet[ , grepl("mean" , names(trainSet))]
-setWithSdTrainSet <- trainSet[ , grepl("std", names(trainSet))]
+setWithMeanAndSdOnly <- mergedData[ , grepl("mean" , names(mergedData)) | grepl("std", names(mergedData))]
+
 
