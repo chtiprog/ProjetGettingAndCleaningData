@@ -28,11 +28,18 @@ columnNames <- read.table("columnName.txt")
 # Label the name of the variable
 colnames(setWithMeanAndSdOnly) <- columnNames[ , 1]
 
+# 3 ---------------------------------------------------------------
+# Recuperate the activities from the y_test.txt and y_train.txt
+activityTest <- read.table("y_test.txt")
+activityTrain <- read.table("y_train.txt")
+# Join the two activities tables in the same order than our setWithMeanAndSdOnly data frame
+mergedActivities <- rbind.fill(activityTest, activityTrain)
+colnames(mergedActivities) <- "activity"
 
 # 5 ---------------------------------------------------------------
 # Recuperate the subjects from the subject_test.txt and subject_train.txt
 subjectTest <- read.table("subject_test.txt")
 subjectTrain <- read.table("subject_train.txt")
-# Join the two subject table in the same order than or setWithMeanAndSdOnly data frame
+# Join the two subject table in the same order than our setWithMeanAndSdOnly data frame
 mergedSubject <- rbind.fill(subjectTest, subjectTrain)
 colnames(mergedSubject) <- "Subject"
