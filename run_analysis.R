@@ -64,5 +64,5 @@ setkeyv(dataTable, keycols)
 # Create an independent tidy data set with the average of each variable for each activity and each subject.
 finalTidyData <- dataTable[, lapply(.SD,mean), by = "Subject,activity"]
 # Finally, write a .txt file containing our final tidy data
-write.table(setWithMeanAndSdOnly, file = "finalTidyData.txt", row.name=FALSE)
+write.table(finalTidyData, file = "finalTidyData.txt", row.name=FALSE)
 
