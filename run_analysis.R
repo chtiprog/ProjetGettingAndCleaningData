@@ -18,6 +18,7 @@ mergedData <- rbind.fill(testSet, trainSet)
 # Extracts only the measurements on the mean and standard deviation for each measurement.
 setWithMeanAndSdOnly <- mergedData[ , grepl("mean" , names(mergedData)) | grepl("std", names(mergedData))]
 
+# 4 ----------------------------------------------------------------
 # Make syntactically valid names
 colnames(setWithMeanAndSdOnly) <- make.names(colnames(setWithMeanAndSdOnly))
 # At this point I'm writing the column names in a .txt files using this command :
@@ -35,6 +36,13 @@ activityTrain <- read.table("y_train.txt")
 # Join the two activities tables in the same order than our setWithMeanAndSdOnly data frame
 mergedActivities <- rbind.fill(activityTest, activityTrain)
 colnames(mergedActivities) <- "activity"
+# Label the activities according to the activity_labels.txt file
+mergedActivities[mergedActivities$activity == 1, ] <- "WALKING"
+mergedActivities[mergedActivities$activity == 2, ] <- "WALKING_UPSTAIRS"
+mergedActivities[mergedActivities$activity == 3, ] <- "WALKING_DOWNSTAIRS"
+mergedActivities[mergedActivities$activity == 4, ] <- "SITTING"
+mergedActivities[mergedActivities$activity == 5, ] <- "STANDING"
+mergedActivities[mergedActivities$activity == 6, ] <- "LAYING"
 
 # 5 ---------------------------------------------------------------
 # Recuperate the subjects from the subject_test.txt and subject_train.txt
