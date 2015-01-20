@@ -43,6 +43,8 @@ mergedActivities[mergedActivities$activity == 3, ] <- "WALKING_DOWNSTAIRS"
 mergedActivities[mergedActivities$activity == 4, ] <- "SITTING"
 mergedActivities[mergedActivities$activity == 5, ] <- "STANDING"
 mergedActivities[mergedActivities$activity == 6, ] <- "LAYING"
+# Merge the activities data frame with our principal dataframe
+dataSet <- cbind(mergedActivities, setWithMeanAndSdOnly)
 
 # 5 ---------------------------------------------------------------
 # Recuperate the subjects from the subject_test.txt and subject_train.txt
@@ -51,3 +53,6 @@ subjectTrain <- read.table("subject_train.txt")
 # Join the two subject table in the same order than our setWithMeanAndSdOnly data frame
 mergedSubject <- rbind.fill(subjectTest, subjectTrain)
 colnames(mergedSubject) <- "Subject"
+# Merge the subject table with our principal dataframe
+dataSet <- cbind(mergedSubject, dataSet)
+
