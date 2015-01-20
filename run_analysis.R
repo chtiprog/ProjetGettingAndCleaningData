@@ -55,4 +55,14 @@ mergedSubject <- rbind.fill(subjectTest, subjectTrain)
 colnames(mergedSubject) <- "Subject"
 # Merge the subject table with our principal dataframe
 dataSet <- cbind(mergedSubject, dataSet)
+# transform this data frame to a data table to use the function from this package
+library(data.table)
+dataTable <- data.table(dataSet)
+# Create two keys on our data table to sort by Subject and activity
+keycols <- c("Subject", "activity")
+setkeyv(dataTable, keycols)
+# Create an independent tidy data set with the average of each variable for each activity and each subject.
+finalTidyData <- dataTable[, lapply(.SD,mean), by = "Subject,activity"]
+# Finally, write a .txt file containing our final tidy data
+write.table(setWithMeanAndSdOnly, file = "finalTidyData.txt", row.name=FALSE)
 
