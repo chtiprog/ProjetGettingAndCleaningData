@@ -18,4 +18,11 @@ mergedData <- rbind.fill(testSet, trainSet)
 # Extracts only the measurements on the mean and standard deviation for each measurement.
 setWithMeanAndSdOnly <- mergedData[ , grepl("mean" , names(mergedData)) | grepl("std", names(mergedData))]
 
+# 3 ----------------------------------------------------------------
+# Make syntactically valid names
+colnames(setWithMeanAndSdOnly) <- make.names(colnames(setWithMeanAndSdOnly))
+# At this point I'm writing the column names in a .txt files using this command :
+# write.table(colnames(setWithMeanAndSdOnly), file = "/Users/spellart/Documents/ProjetGettingAndCleaningData/columnName.txt")
+# Then I use "find and replace" to make the names more readable in the file
+
 
