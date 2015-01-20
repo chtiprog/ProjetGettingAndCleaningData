@@ -18,16 +18,21 @@ mergedData <- rbind.fill(testSet, trainSet)
 # Extracts only the measurements on the mean and standard deviation for each measurement.
 setWithMeanAndSdOnly <- mergedData[ , grepl("mean" , names(mergedData)) | grepl("std", names(mergedData))]
 
-# 3 ----------------------------------------------------------------
 # Make syntactically valid names
 colnames(setWithMeanAndSdOnly) <- make.names(colnames(setWithMeanAndSdOnly))
 # At this point I'm writing the column names in a .txt files using this command :
 # write.table(colnames(setWithMeanAndSdOnly), file = "columnName.txt")
 # Then I use "find and replace" to make the names more readable in the file
-
-# 4 ----------------------------------------------------------------
 # Recuperate the modified column's name from the file from step 3
 columnNames <- read.table("columnName.txt")
 # Label the name of the variable
 colnames(setWithMeanAndSdOnly) <- columnNames[ , 1]
 
+
+# 5 ---------------------------------------------------------------
+# Recuperate the subjects from the subject_test.txt and subject_train.txt
+subjectTest <- read.table("subject_test.txt")
+subjectTrain <- read.table("subject_train.txt")
+# Join the two subject table in the same order than or setWithMeanAndSdOnly data frame
+mergedSubject <- rbind.fill(subjectTest, subjectTrain)
+colnames(mergedSubject) <- "Subject"
