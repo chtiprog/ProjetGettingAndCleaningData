@@ -7,10 +7,10 @@ features <- read.table("features.txt")
 colonnesNames <- features$V2
 colnames(testSet) <- colonnesNames
 colnames(trainSet) <- colonnesNames
-# Custome column'names to distinguish the test and train datasets
+# Custome column's names to distinguish the test and train datasets
 colnames(testSet) <- paste("test", colnames(testSet), sep = "-")
 colnames(trainSet) <- paste("train", colnames(trainSet), sep = "-")
-# Merges the training and the test sets to create one data set
+# Join the training and the test sets to create one data set
 library(plyr)
 mergedData <- rbind.fill(testSet, trainSet)
 
@@ -22,7 +22,12 @@ setWithMeanAndSdOnly <- mergedData[ , grepl("mean" , names(mergedData)) | grepl(
 # Make syntactically valid names
 colnames(setWithMeanAndSdOnly) <- make.names(colnames(setWithMeanAndSdOnly))
 # At this point I'm writing the column names in a .txt files using this command :
-# write.table(colnames(setWithMeanAndSdOnly), file = "/Users/spellart/Documents/ProjetGettingAndCleaningData/columnName.txt")
+# write.table(colnames(setWithMeanAndSdOnly), file = "columnName.txt")
 # Then I use "find and replace" to make the names more readable in the file
 
+# 4 ----------------------------------------------------------------
+# Recuperate the modified column's name from the file from step 3
+columnNames <- read.table("columnName.txt")
+# Label the name of the variable
+colnames(setWithMeanAndSdOnly) <- columnNames[ , 1]
 
