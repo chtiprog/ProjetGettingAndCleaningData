@@ -24,8 +24,8 @@ In my script I use a function from the data.table package, if you didn't install
 5. Run these commands :  
 
 
-    finalFile <- read.table("finalTidyData.txt")  
-    View(finalFile)  
+    `finalFile <- read.table("finalTidyData.txt")`  
+    `View(finalFile)`  
     
     
 Now you can see my wonderful tidy data !
