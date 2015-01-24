@@ -14,7 +14,7 @@ So in the original merged data set (wich contain the test and train datasets), w
 Here are the original names before cleaning and the names you can find in the finalTidyDataSet with the definitions [here](https://docs.google.com/spreadsheets/d/1e5FUGIrPm51fb7yjJN-ixlDB6GgCpG0UoZqwTIz2oLo/edit#gid=0):  
 
 
-Tables
+
 
 | Original column's names               | Modified column's names                                     |
 |---------------------------------------|-------------------------------------------------------------|

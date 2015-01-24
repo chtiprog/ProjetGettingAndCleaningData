@@ -1,9 +1,9 @@
 # 1 ---------------------------------------------------------------
 
 # Create the data frames with the given data set
-testSet <- read.table("X_test.txt")
-trainSet <- read.table("X_train.txt")
-features <- read.table("features.txt")
+testSet <- read.table("Data/X_test.txt")
+trainSet <- read.table("Data/X_train.txt")
+features <- read.table("Data/features.txt")
 # Name the column with the names given in the features file
 columnNames <- features$V2
 colnames(testSet) <- columnNames
@@ -31,7 +31,7 @@ colnames(setWithMeanAndSdOnly) <- make.names(colnames(setWithMeanAndSdOnly))
 # write.table(colnames(setWithMeanAndSdOnly), file = "columnName.txt", row.name = FALSE)
 # Then I use "find and replace" to make the names more readable in the file
 # Recuperate the modified column's name from the file
-columnNames <- read.table("columnName.txt")
+columnNames <- read.table("Data/columnName.txt")
 # Label the name of the variable
 colnames(setWithMeanAndSdOnly) <- columnNames[ , 1]
 rm(columnNames)
@@ -39,8 +39,8 @@ rm(columnNames)
 # 3 ---------------------------------------------------------------
 
 # Recuperate the activities from the y_test.txt and y_train.txt
-activityTest <- read.table("y_test.txt")
-activityTrain <- read.table("y_train.txt")
+activityTest <- read.table("Data/y_test.txt")
+activityTrain <- read.table("Data/y_train.txt")
 # Join the two activities tables in the same order than our setWithMeanAndSdOnly data frame
 mergedActivities <- rbind.fill(activityTest, activityTrain)
 rm(activityTest, activityTrain)
@@ -59,8 +59,8 @@ rm(mergedActivities, setWithMeanAndSdOnly)
 # 5 ---------------------------------------------------------------
 
 # Recuperate the subjects from the subject_test.txt and subject_train.txt
-subjectTest <- read.table("subject_test.txt")
-subjectTrain <- read.table("subject_train.txt")
+subjectTest <- read.table("Data/subject_test.txt")
+subjectTrain <- read.table("Data/subject_train.txt")
 # Join the two subject table in the same order than our setWithMeanAndSdOnly data frame
 mergedSubject <- rbind.fill(subjectTest, subjectTrain)
 rm(subjectTest, subjectTrain)
