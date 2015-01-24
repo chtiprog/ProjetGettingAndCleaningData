@@ -15,6 +15,13 @@ You should create one R script called run_analysis.R that does the following :
 ## Prerequisite  
 In my script I use a function from the data.table package, if you didn't install yet do it before running the script :
   `install.packages("data.table")`
+  
+## The folder  
+- readme.md : This readme
+- CodeBook.md : The code book which explain the data
+- finalTidyData.txt : My final tidy data created by my script
+- run_analysis.R : My script in R
+- Data : the folder which contain the data used by my script
     
 ## Visualize the final tidy data from the .txt file  
 1. Dowload the zip with the "Download zip" button on the right
